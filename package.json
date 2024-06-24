@@ -1,0 +1,26 @@
+{
+  "name": "turing-machine-tba",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.7.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "@fontsource-variable/nunito": "^5.0.19",
+    "astro": "^4.11.0",
+    "astro-tabs": "^0.1.8",
+    "mermaid": "^10.9.1",
+    "sass": "^1.77.6",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.8"
+  }
+}
