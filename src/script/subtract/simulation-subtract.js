@@ -4,6 +4,7 @@ let historySubtraction = [];
 let currentStepSubtraction = 0;
 let intervalSubtraction = null;
 let finalResultSubtraction = "";
+let speedSubtraction = 500;
 
 document.addEventListener("DOMContentLoaded", function () {
   const simulateButton = document.getElementById("simulateSubtractionButton");
@@ -11,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const playButton = document.getElementById("playSubtractionButton");
   const nextButton = document.getElementById("nextSubtractionButton");
   const resetButton = document.getElementById("resetSubtractionButton");
+  const speedInput = document.getElementById("speedSubtractionInput");
 
   if (simulateButton) {
     simulateButton.addEventListener("click", function () {
@@ -33,6 +35,16 @@ document.addEventListener("DOMContentLoaded", function () {
   if (resetButton) {
     resetButton.addEventListener("click", resetSimulationSubtraction);
   }
+
+  if (speedInput) {
+    speedInput.addEventListener("input", function (event) {
+      speedSubtraction = event.target.value;
+      if (intervalSubtraction) {
+        clearInterval(intervalSubtraction);
+        playSimulationSubtraction();
+      }
+    });
+  }
 });
 
 function simulateSubtraction() {
@@ -42,8 +54,12 @@ function simulateSubtraction() {
   if (isNaN(m) || isNaN(n)) {
     document.getElementById("result-subtraction").innerText =
       "Invalid input! Please enter valid numbers.";
+    document.getElementById("expected-result-subtraction").innerText = "";
     return;
   }
+
+  // expected result for subtraction
+  document.getElementById("expected-result-subtraction").innerText = m - n;
 
   let binaryM = m !== 0 ? (m < 0 ? "1" : "") + "0".repeat(Math.abs(m)) : "";
   let binaryN = n !== 0 ? (n < 0 ? "1" : "") + "0".repeat(Math.abs(n)) : "";
@@ -407,15 +423,16 @@ function playSimulationSubtraction() {
   if (intervalSubtraction) {
     clearInterval(intervalSubtraction);
     intervalSubtraction = null;
-  } else {
-    intervalSubtraction = setInterval(() => {
-      if (currentStepSubtraction < historySubtraction.length - 1) {
-        currentStepSubtraction++;
-        displayCurrentStepSubtraction();
-      } else {
-        clearInterval(intervalSubtraction);
-        intervalSubtraction = null;
-      }
-    }, 500);
+    return;
   }
+
+  intervalSubtraction = setInterval(() => {
+    if (currentStepSubtraction < historySubtraction.length - 1) {
+      currentStepSubtraction++;
+      displayCurrentStepSubtraction();
+    } else {
+      clearInterval(intervalSubtraction);
+      intervalSubtraction = null;
+    }
+  }, speedSubtraction);
 }

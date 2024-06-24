@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function setActiveTab(activeTab) {
     tabs.forEach((tab) => {
       tab.classList.remove(
-        "bg-violet-500",
+        "bg-violet-700",
         "text-white",
         "border-violet-500",
         "hover:bg-violet-600"
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "hover:bg-gray-100"
     );
     activeTab.classList.add(
-      "bg-violet-500",
+      "bg-violet-700",
       "text-white",
       "border-violet-500",
       "hover:bg-violet-600"

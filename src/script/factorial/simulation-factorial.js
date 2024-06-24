@@ -4,6 +4,7 @@ let historyFactorial = [];
 let currentStepFactorial = 0;
 let intervalFactorial = null;
 let finalResultFactorial = "";
+let speedFactorial = 500;
 
 document.addEventListener("DOMContentLoaded", function () {
   const simulateFactorialButton = document.getElementById(
@@ -15,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const playFactorialButton = document.getElementById("playFactorialButton");
   const nextFactorialButton = document.getElementById("nextFactorialButton");
   const resetFactorialButton = document.getElementById("resetFactorialButton");
+  const speedFactorialInput = document.getElementById("speedFactorialInput");
 
   if (simulateFactorialButton) {
     simulateFactorialButton.addEventListener("click", function () {
@@ -37,6 +39,16 @@ document.addEventListener("DOMContentLoaded", function () {
   if (resetFactorialButton) {
     resetFactorialButton.addEventListener("click", resetSimulationFactorial);
   }
+
+  if (speedFactorialInput) {
+    speedFactorialInput.addEventListener("input", function (event) {
+      speedFactorial = event.target.value;
+      if (intervalFactorial) {
+        clearInterval(intervalFactorial);
+        playSimulationFactorial();
+      }
+    });
+  }
 });
 
 function simulateFactorial() {
@@ -45,8 +57,17 @@ function simulateFactorial() {
   if (isNaN(m) || m < 0) {
     document.getElementById("result-factorial").innerText =
       "Invalid input! Please enter a non-negative number.";
+    document.getElementById("expected-result-factorial").innerText = "";
     return;
   }
+
+  // expected result factorial
+  let expectedResultFactorial = 1;
+  for (let i = 1; i <= m; i++) {
+    expectedResultFactorial *= i;
+  }
+  document.getElementById("expected-result-factorial").innerText =
+    expectedResultFactorial;
 
   const input = "B" + "0".repeat(m) + "1" + "B";
   const tapes = [input, "B".repeat(input.length), "B".repeat(input.length)];
@@ -308,8 +329,7 @@ function simulateFactorial() {
   currentStepFactorial = 0;
   finalResultFactorial = tapes[0].replace(/B/g, "").length;
 
-  document.getElementById("result-factorial").innerText =
-    finalResultFactorial;
+  document.getElementById("result-factorial").innerText = finalResultFactorial;
 
   updateResults(finalResultFactorial);
   displayCurrentStepFactorial();
@@ -381,15 +401,16 @@ function playSimulationFactorial() {
   if (intervalFactorial) {
     clearInterval(intervalFactorial);
     intervalFactorial = null;
-  } else {
-    intervalFactorial = setInterval(() => {
-      if (currentStepFactorial < historyFactorial.length - 1) {
-        currentStepFactorial++;
-        displayCurrentStepFactorial();
-      } else {
-        clearInterval(intervalFactorial);
-        intervalFactorial = null;
-      }
-    }, 500);
+    return;
   }
+
+  intervalFactorial = setInterval(() => {
+    if (currentStepFactorial < historyFactorial.length - 1) {
+      currentStepFactorial++;
+      displayCurrentStepFactorial();
+    } else {
+      clearInterval(intervalFactorial);
+      intervalFactorial = null;
+    }
+  }, speedFactorial);
 }

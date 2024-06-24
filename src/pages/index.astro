@@ -6,7 +6,7 @@ const base = import.meta.env.BASE_URL;
 
 <Layout title="Turing Machine">
   <main
-    class="container mx-auto min-h-screen flex flex-col items-center pt-24 pb-4 px-8"
+    class="container mx-auto min-h-screen flex flex-col items-center pt-12 pb-4 px-8"
   >
     <div class="w-full flex justify-between items-center mb-8">
       <div id="result-last" class="text-2xl font-bold">Last Result: -</div>
@@ -18,13 +18,14 @@ const base = import.meta.env.BASE_URL;
     <div class="flex w-full md:max-w-xl mx-4 rounded shadow mb-8">
       <button
         id="tab-division"
-        class="tab w-full flex justify-center font-medium rounded-l px-5 py-2 border bg-white text-gray-800 border-gray-200 hover:bg-gray-100"
+        class="tab w-full flex justify-center font-medium px-5 py-2 border bg-violet-700 text-white border-violet-500 hover:bg-violet-600"
+        
       >
         Division
       </button>
       <button
         id="tab-factorial"
-        class="tab w-full flex justify-center font-medium px-5 py-2 border bg-violet-500 text-white border-violet-500 hover:bg-violet-600"
+        class="tab w-full flex justify-center font-medium rounded-l px-5 py-2 border bg-white text-gray-800 border-gray-200 hover:bg-gray-100"
       >
         Factorial
       </button>
@@ -76,6 +77,12 @@ const base = import.meta.env.BASE_URL;
               class="block text-gray-700 font-bold text-lg">Result:</label
             >
             <div id="result-division" class="text-xl font-bold"></div>
+            <label
+              for="expected-result-division"
+              class="block text-gray-700 font-bold text-lg"
+              >Expected Result:</label
+            >
+            <div id="expected-result-division" class="text-xl font-bold"></div>
           </div>
           <div id="transitions-division" class="py-2 my-2"></div>
           <div id="playingDivision" class="flex flex-wrap gap-2 mt-4">
@@ -103,6 +110,19 @@ const base = import.meta.env.BASE_URL;
             >
               Play
             </button>
+            <label for="speedDivisionInput" class="block text-gray-700 mt-1 py-2"
+              >Speed:</label
+            >
+            <select
+              id="speedDivisionInput"
+              class="block mt-1 px-2 py-2 border-gray-300 rounded-md shadow-sm focus:border-violet-700 focus:ring focus:ring-violet-700 focus:ring-opacity-50"
+            >
+              <option value="10">Very Fast</option>
+              <option value="100">Fast</option>
+              <option value="500">Medium</option>
+              <option value="1000">Slow</option>
+              <option value="2000">Very Slow</option>
+            </select>
           </div>
         </div>
       </div>
@@ -136,6 +156,12 @@ const base = import.meta.env.BASE_URL;
               class="block text-gray-700 font-bold text-lg">Result:</label
             >
             <div id="result-factorial" class="text-xl font-bold"></div>
+            <label
+              for="expected-result-factorial"
+              class="block text-gray-700 font-bold text-lg"
+              >Expected Result:</label
+            >
+            <div id="expected-result-factorial" class="text-xl font-bold"></div>
           </div>
           <div id="transitions-factorial" class="py-2 my-2"></div>
           <div id="playingFactorial" class="flex flex-wrap gap-2 mt-4">
@@ -163,6 +189,19 @@ const base = import.meta.env.BASE_URL;
             >
               Play
             </button>
+            <label for="speedFactorialInput" class="block text-gray-700 mt-2">
+              Speed:</label
+            >
+            <select
+              id="speedFactorialInput"
+              class="block w-full mt-1 px-2 py-2 border-gray-300 rounded-md shadow-sm focus:border-violet-700 focus:ring focus:ring-violet-700 focus:ring-opacity-50"
+            >
+              <option value="10">Very Fast</option>
+              <option value="100">Fast</option>
+              <option value="500">Medium</option>
+              <option value="1000">Slow</option>
+              <option value="2000">Very Slow</option>
+            </select>
           </div>
         </div>
       </div>
@@ -209,6 +248,13 @@ const base = import.meta.env.BASE_URL;
               class="block text-gray-700 font-bold text-lg">Result:</label
             >
             <div id="result-subtraction" class="text-xl font-bold"></div>
+            <label
+              for="expected-result-subtraction"
+              class="block text-gray-700 font-bold text-lg"
+              >Expected Result:</label
+            >
+            <div id="expected-result-subtraction" class="text-xl font-bold">
+            </div>
           </div>
           <div id="transitions-subtraction" class="py-2 my-2"></div>
           <div id="playingSubtraction" class="flex flex-wrap gap-2 mt-4">
@@ -236,6 +282,19 @@ const base = import.meta.env.BASE_URL;
             >
               Play
             </button>
+            <label for="speedFactorialInput" class="block text-gray-700 mt-2">
+              Speed:</label
+            >
+            <select
+              id="speedSubtractionInput"
+              class="block w-full mt-1 px-2 py-2 border-gray-300 rounded-md shadow-sm focus:border-violet-700 focus:ring focus:ring-violet-700 focus:ring-opacity-50"
+            >
+              <option value="10">Very Fast</option>
+              <option value="100">Fast</option>
+              <option value="500">Medium</option>
+              <option value="1000">Slow</option>
+              <option value="2000">Very Slow</option>
+            </select>
           </div>
         </div>
       </div>

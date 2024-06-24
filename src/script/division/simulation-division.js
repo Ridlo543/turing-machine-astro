@@ -4,6 +4,7 @@ let historyDivision = [];
 let currentStepDivision = 0;
 let intervalDivision = null;
 let finalResultDivision = "";
+let speedDivision = 500;
 
 document.addEventListener("DOMContentLoaded", function () {
   const simulateButton = document.getElementById("simulateDivisionButton");
@@ -11,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const playButton = document.getElementById("playDivisionButton");
   const nextButton = document.getElementById("nextDivisionButton");
   const resetButton = document.getElementById("resetDivisionButton");
+  const speedInput = document.getElementById("speedDivisionInput");
 
   if (simulateButton) {
     simulateButton.addEventListener("click", function () {
@@ -33,6 +35,16 @@ document.addEventListener("DOMContentLoaded", function () {
   if (resetButton) {
     resetButton.addEventListener("click", resetSimulationDivision);
   }
+
+  if (speedInput) {
+    speedInput.addEventListener("input", function (event) {
+      speedDivision = event.target.value;
+      if (intervalDivision) {
+        clearInterval(intervalDivision);
+        playSimulationDivision();
+      }
+    });
+  }
 });
 
 export function simulateDivision() {
@@ -42,14 +54,21 @@ export function simulateDivision() {
   if (isNaN(m) || isNaN(n) || n === 0) {
     document.getElementById("result-division").innerText =
       "Invalid input! Please enter valid numbers and n should not be 0.";
+    document.getElementById("expected-result-division").innerText = "";
     return;
   }
 
   if (n === 0) {
     document.getElementById("result-division").innerText =
       "Undefined (division by zero).";
+    document.getElementById("expected-result-division").innerText = "";
     return;
   }
+
+  // Calculate expected result
+  let expectedResult = Math.floor(m / n);
+  document.getElementById("expected-result-division").innerText =
+    expectedResult;
 
   let isNegativeResult = false;
   if (m < 0 && n < 0) {
@@ -218,8 +237,7 @@ export function simulateDivision() {
       ? (isNegativeResult ? "-" : "") + tapes[2].replace(/B/g, "").length
       : "Undefined (rejected)";
 
-  document.getElementById("result-division").innerText =
-    finalResultDivision;
+  document.getElementById("result-division").innerText = finalResultDivision;
 
   updateResults(finalResultDivision);
   displayCurrentStepDivision();
@@ -271,8 +289,8 @@ export function resetSimulationDivision() {
 }
 
 export function previousStepDivision() {
-    currentStepDivision--;
-    displayCurrentStepDivision();
+  currentStepDivision--;
+  displayCurrentStepDivision();
 }
 
 export function nextStepDivision() {
@@ -295,6 +313,6 @@ export function playSimulationDivision() {
         clearInterval(intervalDivision);
         intervalDivision = null;
       }
-    }, 500);
+    }, speedDivision);
   }
 }
