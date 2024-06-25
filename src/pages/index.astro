@@ -19,7 +19,6 @@ const base = import.meta.env.BASE_URL;
       <button
         id="tab-division"
         class="tab w-full flex justify-center font-medium px-5 py-2 border bg-violet-700 text-white border-violet-500 hover:bg-violet-600"
-        
       >
         Division
       </button>
@@ -72,18 +71,25 @@ const base = import.meta.env.BASE_URL;
           </button>
 
           <div class="my-4">
-            <label
-              for="result-division"
-              class="block text-gray-700 font-bold text-lg">Result:</label
-            >
-            <div id="result-division" class="text-xl font-bold"></div>
-            <label
-              for="expected-result-division"
-              class="block text-gray-700 font-bold text-lg"
-              >Expected Result:</label
-            >
-            <div id="expected-result-division" class="text-xl font-bold"></div>
+            <div class="flex items-center mb-4">
+              <label
+                for="result-division"
+                class="block text-gray-700 font-bold text-lg mr-2"
+                >Result:</label
+              >
+              <div id="result-division" class="text-xl font-bold"></div>
+            </div>
+            <div class="flex items-center">
+              <label
+                for="expected-result-division"
+                class="block text-gray-700 font-bold text-lg mr-2"
+                >Expected Result:</label
+              >
+              <div id="expected-result-division" class="text-xl font-bold">
+              </div>
+            </div>
           </div>
+
           <div id="transitions-division" class="py-2 my-2"></div>
           <div id="playingDivision" class="flex flex-wrap gap-2 mt-4">
             <button
@@ -110,8 +116,9 @@ const base = import.meta.env.BASE_URL;
             >
               Play
             </button>
-            <label for="speedDivisionInput" class="block text-gray-700 mt-1 py-2"
-              >Speed:</label
+            <label
+              for="speedDivisionInput"
+              class="block text-gray-700 mt-1 py-2">Speed:</label
             >
             <select
               id="speedDivisionInput"
@@ -151,17 +158,22 @@ const base = import.meta.env.BASE_URL;
             Simulate
           </button>
           <div class="my-4">
-            <label
-              for="result-factorial"
-              class="block text-gray-700 font-bold text-lg">Result:</label
-            >
-            <div id="result-factorial" class="text-xl font-bold"></div>
-            <label
-              for="expected-result-factorial"
-              class="block text-gray-700 font-bold text-lg"
-              >Expected Result:</label
-            >
-            <div id="expected-result-factorial" class="text-xl font-bold"></div>
+            <div class="flex items-center mb-4">
+              <label
+                for="result-factorial"
+                class="block text-gray-700 font-bold text-lg">Result:</label
+              >
+              <div id="result-factorial" class="text-xl font-bold"></div>
+            </div>
+            <div class="flex items-center">
+              <label
+                for="expected-result-factorial"
+                class="block text-gray-700 font-bold text-lg"
+                >Expected Result:</label
+              >
+              <div id="expected-result-factorial" class="text-xl font-bold">
+              </div>
+            </div>
           </div>
           <div id="transitions-factorial" class="py-2 my-2"></div>
           <div id="playingFactorial" class="flex flex-wrap gap-2 mt-4">
@@ -208,7 +220,6 @@ const base = import.meta.env.BASE_URL;
       <div id="diagram-factorial" class="my-6 max-w-full mx-auto"></div>
     </div>
 
-    <!-- subtraction -->
     <div id="content-subtraction" class="tab-content hidden container mx-auto">
       <div class="bg-white rounded-md shadow-md px-6 py-8 my-6">
         <div class="max-w-xl">
@@ -243,17 +254,21 @@ const base = import.meta.env.BASE_URL;
           </button>
 
           <div class="my-4">
-            <label
-              for="result-subtraction"
-              class="block text-gray-700 font-bold text-lg">Result:</label
-            >
-            <div id="result-subtraction" class="text-xl font-bold"></div>
-            <label
-              for="expected-result-subtraction"
-              class="block text-gray-700 font-bold text-lg"
-              >Expected Result:</label
-            >
-            <div id="expected-result-subtraction" class="text-xl font-bold">
+            <div class="flex items-center mb-4">
+              <label
+                for="result-subtraction"
+                class="block text-gray-700 font-bold text-lg">Result:</label
+              >
+              <div id="result-subtraction" class="text-xl font-bold"></div>
+            </div>
+            <div class="flex items-center">
+              <label
+                for="expected-result-subtraction"
+                class="block text-gray-700 font-bold text-lg"
+                >Expected Result:</label
+              >
+              <div id="expected-result-subtraction" class="text-xl font-bold">
+              </div>
             </div>
           </div>
           <div id="transitions-subtraction" class="py-2 my-2"></div>
@@ -300,8 +315,9 @@ const base = import.meta.env.BASE_URL;
       </div>
       <div id="diagram-subtraction" class="my-6 max-w-full mx-auto"></div>
     </div>
+  </main>
 
-    <!-- <script>
+  <!-- <script>
     document.addEventListener("DOMContentLoaded", function () {
       const tabs = document.querySelectorAll(".tab");
       const contents = document.querySelectorAll(".tab-content");
@@ -361,9 +377,8 @@ const base = import.meta.env.BASE_URL;
       }
     }
   </script> -->
-    <script src="../script/drawDiagram.js"></script>
-    <script src="../script/division/simulation-division.js"></script>
-    <script src="../script/factorial/simulation-factorial.js"></script>
-    <script src="../script/subtract/simulation-subtract.js"></script>
-  </main>
+  <script src="../script/drawDiagram.js"></script>
+  <script src="../script/division/simulation-division.js"></script>
+  <script src="../script/factorial/simulation-factorial.js"></script>
+  <script src="../script/subtract/simulation-subtract.js"></script>
 </Layout>
