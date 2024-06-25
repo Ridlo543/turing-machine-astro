@@ -284,6 +284,10 @@ function displayCurrentStepDivision() {
 }
 
 export function resetSimulationDivision() {
+  if (intervalDivision) {
+    clearInterval(intervalDivision);
+    intervalDivision = null;
+  }
   currentStepDivision = 0;
   displayCurrentStepDivision();
 }

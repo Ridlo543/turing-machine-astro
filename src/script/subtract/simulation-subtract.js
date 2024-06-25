@@ -401,6 +401,10 @@ function displayCurrentStepSubtraction() {
 }
 
 function resetSimulationSubtraction() {
+  if (intervalSubtraction) {
+    clearInterval(intervalSubtraction);
+    intervalSubtraction = null;
+  }
   currentStepSubtraction = 0;
   displayCurrentStepSubtraction();
 }

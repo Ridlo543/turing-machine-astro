@@ -378,7 +378,16 @@ function displayCurrentStepFactorial() {
   `;
 }
 
+// function resetSimulationFactorial() {
+//   currentStepFactorial = 0;
+//   displayCurrentStepFactorial();
+// }
+
 function resetSimulationFactorial() {
+  if (intervalFactorial) {
+    clearInterval(intervalFactorial);
+    intervalFactorial = null;
+  }
   currentStepFactorial = 0;
   displayCurrentStepFactorial();
 }
