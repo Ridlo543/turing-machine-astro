@@ -51,24 +51,25 @@ export function simulateDivision() {
   let m = parseInt(document.getElementById("input-m-division").value);
   let n = parseInt(document.getElementById("input-n-division").value);
 
-  if (isNaN(m) || isNaN(n) || n === 0) {
+  if (isNaN(m) || isNaN(n)) {
     document.getElementById("result-division").innerText =
-      "Invalid input! Please enter valid numbers and n should not be 0.";
-    document.getElementById("expected-result-division").innerText = "";
-    return;
-  }
-
-  if (n === 0) {
-    document.getElementById("result-division").innerText =
-      "Undefined (division by zero).";
+      "Invalid input! Please enter valid numbers.";
     document.getElementById("expected-result-division").innerText = "";
     return;
   }
 
   // Calculate expected result
-  let expectedResult = Math.floor(m / n);
-  document.getElementById("expected-result-division").innerText =
-    expectedResult;
+  if (n !== 0) {
+    let expectedResult = Math.floor(m / n);
+    document.getElementById("expected-result-division").innerText =
+      expectedResult;
+  } else {
+    document.getElementById("expected-result-division").innerText =
+      "Undefined (division by zero).";
+    finalResultDivision = "q_reject";
+    document.getElementById("result-division").innerText = finalResultDivision;
+    return;
+  }
 
   let isNegativeResult = false;
   if (m < 0 && n < 0) {
@@ -134,8 +135,8 @@ export function simulateDivision() {
     },
     {
       q: "q1",
-      read: ["B", "0", "B"],
-      write: ["B", "0", "B"],
+      read: ["B", "B", "B"],
+      write: ["B", "B", "B"],
       move: ["S", "S", "S"],
       nextState: "q_reject",
     },
